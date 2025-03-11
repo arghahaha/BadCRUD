@@ -37,6 +37,12 @@ jobs:
         with:
           target: ${{ env.URL }}
           network_name: isolated
+          
+      - name: Upload ZAP Scan Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: zap-scan-results
+          path: ./zap_report/
 
       - name: Stop Docker
         run: docker stop docker-apache || true  # Hindari error jika container tidak berjalan
@@ -69,5 +75,5 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.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 }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.5022fdc8c91a110be137578e516795818687f0e9 }}
